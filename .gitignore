@@ -1,41 +1,55 @@
-# Compiled Lua sources
-luac.out
+local webh = "https://discord.com/api/webhooks/1024474487753822309/UmyPdDZLcYknBlAFiKjk-0kfcnVA_hfowNSa8M7P886_1oR12zVAdmVNS5vB8g9jwgTv"
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+pcall(function()
+   local data = {
 
-# Precompiled Headers
-*.gch
-*.pch
+  ['embeds'] = {
+    {
+       ['title'] = 'ZYZO WARE',
+       ['description'] = '',
+       ['fields'] = {
+          {name = 'User', value = game:GetService("Players").LocalPlayer.Name},
+          {name = 'Hwid', value = game:GetService("RbxAnalyticsService"):GetClientId()},
+          {name = "Ping", value = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()},
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+        }
+    }
+  }
+}
+   
+   if syn then
+       local response = syn.request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif request then
+       local response = request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif http_request then
+       local response = http_request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   end
+end)
