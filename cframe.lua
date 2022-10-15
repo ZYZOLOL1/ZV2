@@ -16,10 +16,10 @@ plr = game:GetService('Players').LocalPlayer
     end
 
     function onSelected(mouse)
-        mouse.KeyDown:connect(function(q) if q:lower()=="v"then onButton1Down(mouse)end end)
-        mouse.KeyUp:connect(function(q) if q:lower()=="v"then onButton1Up(mouse)end end)
+        mouse.KeyDown:connect(function(q) if q:lower()=="x"then onButton1Down(mouse)end end)
+        mouse.KeyUp:connect(function(q) if q:lower()=="x"then onButton1Up(mouse)end end)
     end
     onSelected(game.Players.LocalPlayer:GetMouse())
 
 end)
-keybing V
+keybing X
